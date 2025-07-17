@@ -2,6 +2,7 @@ package com.example.product.controller;
 
 import com.example.product.Service.ProductService;
 import com.example.product.bean.Product;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description: 商品控制层
  * @Version:
  */
+@Slf4j
 @Controller
 @RestController
 public class ProductController {
@@ -26,7 +28,7 @@ public class ProductController {
     public Product getProduct(@PathVariable("id") Long productId){
 
         Product product = productService.getProductById(productId);
-
+        System.out.println("hello");
         return product;
     }
 }

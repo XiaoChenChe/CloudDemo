@@ -8,7 +8,11 @@ spring:
 
     config:
       server-addr: 127.0.0.1:8848
-
+  config:
+    import-check:
+      enabled: false
 server:
   port: 9000
+
+# 禁用检查
 
