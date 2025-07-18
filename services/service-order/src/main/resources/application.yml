@@ -13,3 +13,7 @@ spring:
 
 server:
   port: 8000
+
+logging:
+  level:
+    com.example.order.feign: debug

@@ -34,6 +34,7 @@ public class OrderController {
     @Autowired
     OrderProperties orderProperties;
 
+
     @GetMapping("/config")
     public String config(){
         return "timeout:"+orderProperties.getOrderTimeout()+"auto-confirm:"+orderProperties.getOrderAutoConfirm();

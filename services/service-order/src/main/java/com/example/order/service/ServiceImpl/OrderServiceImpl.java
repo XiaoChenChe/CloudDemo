@@ -1,5 +1,6 @@
 package com.example.order.service.ServiceImpl;
 
+import com.example.order.feign.ProductFeign;
 import com.example.order.service.OrderService;
 import com.example.order.bean.Order;
 import com.example.product.bean.Product;
@@ -32,9 +33,14 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private DiscoveryClient discoveryClient;
+
+    @Autowired
+    private ProductFeign productFeign;
+
     @Override
     public Order createOrder(Long ProductId, String userId) {
-        Product product = getProductFromRemoteWithBalanceLoadWithAnnotation(ProductId);
+        Product product = productFeign.getProductById(ProductId);
+        //Product product = getProductFromRemoteWithBalanceLoadWithAnnotation(ProductId);
         Order order = new Order();
         order.setId(1L);
         //总金额

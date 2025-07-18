@@ -18,6 +18,11 @@
     </properties>
 
     <dependencies>
+        <!--sentinel-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
         <!--nacaos配置依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

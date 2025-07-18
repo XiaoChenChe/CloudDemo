@@ -7,6 +7,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 import java.util.concurrent.Executor;
@@ -22,6 +23,7 @@ import java.util.concurrent.Executors;
 //配置中心中的配置优先级比配置文件优先级高，先导入优先，
 @EnableDiscoveryClient
 @SpringBootApplication
+@EnableFeignClients
 public class OrderMainApplication {
 
     public static void main(String[] args){
