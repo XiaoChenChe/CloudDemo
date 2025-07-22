@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: service-product
+  cloud:
+    nacos:
+      discovery:
+      server-addr: 127.0.0.1:8848
+#      config:
+#        import-check:
+#          enabled: false
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+      eager: true
+  config:
+    import:
+      - nacos:service-product.yaml?group=DEFAULT_GROUP
+    config:
+      server-addr: 127.0.0.1:8848
+
+server:
+  port: 9000
+
+# 禁用检查
+
