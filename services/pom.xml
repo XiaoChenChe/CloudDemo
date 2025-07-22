@@ -23,6 +23,11 @@
     </properties>
 
     <dependencies>
+        <!--sentinel-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>model</artifactId>

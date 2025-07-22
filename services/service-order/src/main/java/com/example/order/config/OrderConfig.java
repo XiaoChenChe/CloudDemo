@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 public class OrderConfig {
 
 
-    @Bean
+    //@Bean
     Retryer retryer(){
         return new Retryer.Default();
     }

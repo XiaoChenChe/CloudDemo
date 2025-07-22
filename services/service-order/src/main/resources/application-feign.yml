@@ -4,15 +4,16 @@ spring:
       client:
         config:
           default:
+            connect-timeout: 1000
+            read-timeout: 5000
+          service-product:
             logger-level: full
             connect-timeout: 1000
             read-timeout: 5000
-            service-product:
-              logger-level: full
-              connect-timeout: 1000
-              read-timeout: 5000
-              retryer: feign.retryer.Default
-
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+      eager: true
 feign:
   sentinel:
     enabled: true
