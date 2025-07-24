@@ -1,6 +1,7 @@
 package com.example.order.service.ServiceImpl;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.example.order.feign.ProductFeign;
 import com.example.order.service.OrderService;
 import com.example.order.bean.Order;
@@ -38,7 +39,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private ProductFeign productFeign;
 
-    @SentinelResource(value = "createOrder")
+    @SentinelResource(value = "createOrder",blockHandler = "createOrderFallback")
     @Override
     public Order createOrder(Long ProductId, String userId) {
         Product product = productFeign.getProductById(ProductId);
@@ -55,6 +56,14 @@ public class OrderServiceImpl implements OrderService {
 
         order.setProductLists(Arrays.asList(product));
         return order ;
+    }
+
+    public Order createOrderFallback(Long ProductId, String userId, BlockException e){
+        Order order = new Order();
+        order.setUserId(userId);
+        order.setUserName("未知用户"+e.getClass());
+        return order;
+
     }
 
     private Product getProductFromRemote(Long productId){
@@ -82,6 +91,5 @@ public class OrderServiceImpl implements OrderService {
         Product result = restTemplate.getForObject(url,Product.class);
         return result;
     }
-
 
 }

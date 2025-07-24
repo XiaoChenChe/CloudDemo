@@ -8,7 +8,7 @@ import lombok.Data;
  * @Description:
  * @Version:
  */
-
+//包装返回结果类
 @Data
 public class R {
     private Integer code;

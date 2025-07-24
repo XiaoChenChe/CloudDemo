@@ -47,7 +47,7 @@ public class OrderController {
     private Product getProductById(Long productId){
         //1，获取到商品服务所在的所有机器的Ip+port
         List<ServiceInstance> instances = discoveryClient.getInstances("service-product");
-        //2发送请求
+        //2,发送请求
         ServiceInstance instance = instances.get(0);
         String url = instance.getUri()+"/product/"+productId;
         RestTemplate restTemplate = new RestTemplate();
