@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @Author: cjx
  * @CreateTime: 2025-07-14
@@ -25,10 +27,15 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("/product/{id}")
-    public Product getProduct(@PathVariable("id") Long productId){
+    public Product getProduct(@PathVariable("id") Long productId)  {
 
         Product product = productService.getProductById(productId);
         System.out.println("hello");
+        try{
+            TimeUnit.SECONDS.sleep(2);
+        }catch(InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return product;
     }
 }
